@@ -61,11 +61,13 @@ const PostDetail = ({ post }) => {
             <span className="align-middle mr-8">{moment(post.createdAt).format('MMMM DD, YYYY')}</span>
           </div>
         </div>
-        <h1 className="transition duration-700 text-start mb-8 ml-8 cursor-pointer hover:text-blue-900 lg:text-3xl text-xl font-extrabold ">{post.title}</h1>
-        {post.content.raw.children.map((typeObj, index) => {
-          const children = typeObj.children.map((item, itemIndex) => getContentFragment(itemIndex, item.text, item));
-          return getContentFragment(index, children, typeObj, typeObj.type);
-        })}
+        <h1 className="transition duration-700 text-start mb-8 mx-4 cursor-pointer hover:text-blue-900 lg:text-3xl text-xl font-extrabold ">{post.title}</h1>
+        <div className="mx-4">
+          {post.content.raw.children.map((typeObj, index) => {
+            const children = typeObj.children.map((item, itemIndex) => getContentFragment(itemIndex, item.text, item));
+            return getContentFragment(index, children, typeObj, typeObj.type);
+          })}
+        </div>
       </div>
     </>
   );
