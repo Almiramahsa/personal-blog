@@ -90,7 +90,7 @@ export const getRecentPosts = async () => {
 export const getSimiliarPosts = async (categories, slug) => {
   const query = gql`
     query GetSimilarPosts($slug: String!, $categories: [String!]) {
-      posts(where: { slug_not: $slug, categories_some: { name_in: $categories } }, last: 3) {
+      posts(where: { slug_not: $slug, categories_some: { slug_in: $categories } }, last: 3) {
         title
         featuredImage {
           url
