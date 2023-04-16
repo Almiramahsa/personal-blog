@@ -2,11 +2,11 @@ import React from 'react';
 import moment from 'moment/moment';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const PostCard = ({ post }) => {
-  console.log(post);
   return (
-    <div className=" mt-4 lg:p-8 lg:pb-10 mb-8">
+    <div className=" mt-4 lg:p-8 lg:pb-10 mb-8 hover:shadow-md hover:rounded">
       <div className="flex items-center justify-end text-sm mb-5 lg:mb-5 w-full lg:w-auto">
         <div className="font-medium text-gray-400 ">
           <span className="align-middle ">{moment(post.createdAt).format('MMMM DD, YYYY')}</span>
@@ -29,7 +29,9 @@ const PostCard = ({ post }) => {
       </div>
       <div className="text-left lg:mt-0 md:mt-4 px-4 my-4">
         <Link href={`/post/${post.slug}`}>
-          <span className="transition duration-500 transform hover:-translate-y-1 font-medium text-sm text-violet-800  inline-block">Continue reading</span>
+          <motion.span whileHover={{ y: -2 }} className="transition duration-500 transform hover:-translate-y-1 font-medium text-sm text-violet-800  inline-block">
+            Continue reading
+          </motion.span>
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#bfbfbf" stroke="#bfbfbf" className="inline-block w-4 h-4 md:ml-1">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>

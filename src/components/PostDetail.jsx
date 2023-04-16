@@ -51,13 +51,13 @@ const PostDetail = ({ post }) => {
   };
   return (
     <>
-      <div className="shadow-md rounded-md lg:p-8  pb-12 mb-8">
+      <div className=" lg:p-8  pb-12 mb-8">
         <div className="relative overflow-hidden shadow-md mb-6">
           <Image src={post.featuredImage.url} alt={post.title} className="object-top h-full w-full rounded-t-lg" width={800} height={300} />
         </div>
 
         <div className="flex items-center justify-end text-sm mb-5 lg:mb-5 w-full lg:w-auto">
-          <div className="font-sm  text-gray-400 ">
+          <div className="text-md text-gray-400 ">
             <span className="align-middle mr-8">{moment(post.createdAt).format('MMMM DD, YYYY')}</span>
           </div>
         </div>
