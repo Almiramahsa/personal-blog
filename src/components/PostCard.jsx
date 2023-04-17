@@ -13,7 +13,14 @@ const PostCard = ({ post, category }) => {
           <Image src={post.featuredImage.url} width={800} height={600} alt={post.title} className="object-top absolute w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg p-0" priority={true} />
         ) : null}
       </div>
-      <h1 className="transition duration-700 text-start mb-4 lg:px-8 mt-8 px-4 cursor-pointer hover:text-blue-900 text-xl lg:text-3xl font-bold ">
+      <p className="px-8 mb-4">
+        {post.categories.map((category) => (
+          <Link className="text-md font-medium  text-cyan-900" key={category.slug} href={`/category/${category.slug}`}>
+            {category.name}
+          </Link>
+        ))}
+      </p>
+      <h1 className="transition duration-700 text-start mb-4 lg:px-8  px-4 cursor-pointer hover:text-blue-900 text-xl lg:text-3xl font-bold ">
         <Link href={`/post/${post.slug}`}>{post.title}</Link>
       </h1>
       <div className="flex items-center justify-end text-sm lg:mb-5 mb-8 w-full lg:px-8 px-4 lg:w-auto">
@@ -33,14 +40,14 @@ const PostCard = ({ post, category }) => {
           </motion.span>
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#bfbfbf" stroke="#bfbfbf" className="inline-block w-4 h-4 md:ml-1">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" strokelinejoin="round"></g>
             <g id="SVGRepo_iconCarrier">
               <title></title>
               <g id="Complete">
                 <g id="arrow-up-right">
                   <g>
-                    <polyline data-name="Right" fill="none" id="Right-2" points="18.7 12.4 18.7 5.3 11.6 5.3" stroke="#999999" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polyline>
-                    <line fill="none" stroke="#999999" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="5.3" x2="17.1" y1="18.7" y2="6.9"></line>
+                    <polyline data-name="Right" fill="none" id="Right-2" points="18.7 12.4 18.7 5.3 11.6 5.3" stroke="#999999" stroke-linecap="round" strokeLineJoin="round" stroke-width="2"></polyline>
+                    <line fill="none" stroke="#999999" strokelinecap="round" strokelinejoin="round" strokeWidth="2" x1="5.3" x2="17.1" y1="18.7" y2="6.9"></line>
                   </g>
                 </g>
               </g>

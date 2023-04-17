@@ -61,6 +61,14 @@ const PostDetail = ({ post }) => {
             <span className="align-middle mr-8">{moment(post.createdAt).format('MMMM DD, YYYY')}</span>
           </div>
         </div>
+        <p className="px-4 mb-4">
+          {post.categories.map((category) => (
+            <Link className="text-md font-medium  text-cyan-900" key={category.slug} href={`/category/${category.slug}`}>
+              {category.name}
+            </Link>
+          ))}
+        </p>
+
         <h1 className="transition duration-700 text-start mb-8 mx-4 cursor-pointer hover:text-blue-900 lg:text-3xl text-xl font-extrabold ">{post.title}</h1>
         <div className="mx-4">
           {post.content.raw.children.map((typeObj, index) => {
