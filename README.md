@@ -1,41 +1,129 @@
-##Deployment Link
-almiramahsa-blog.vercel.app
+<h3 align="left">:hammer_and_wrench: Languages and Tools:</h3>
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="left"> 
+ 
+  <a href="https://nextjs.org/" target="_blank" rel="noreferrer"> 
+    <img src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white" alt="nextjs"/> 
+  </a> 
 
-## Getting Started
+  <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"> 
+    <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="tailwind"/> 
+  </a> 
+    <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"> 
+   
+  </a> 
+ 
+  <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> 
+    <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="css3"/> 
+  </a> 
+   <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> 
+    <img src="https://img.shields.io/badge/-GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white" alt="graphql"/> 
+  </a> 
 
-First, run the development server:
+## Work with Graphql-cms
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+GraphCMS is a headless content management system based on GraphQL technology enabling seamless integration with any application.
+
+## Features
+
+* Build markdown/remark directory to json-file with `graphql-cms build`
+* Serve it as an graphql-api `graphql-cms build`
+* Control usage with a `graphql-cms-config.js` file
+
+See the example-folder
+
+## Features todo
+
+* Use sharp.js to extract inline-image links in markdown and remark custom fields and create next-gen picture tags with responsive images
+
+## Graphql-api
+
+### Fetch a list of pages
+
+```
+{
+  pages (
+    orderBy: frontmatter_order_ASC,
+    where:{
+      frontmatter_order__ne: null
+    }
+    limit: 10
+    skip: 10
+  ) {
+    count,
+    nodes {
+      id
+      content
+      slug
+      frontmatter {
+        order
+        title
+        meta {
+          title
+          description
+        }
+      }
+    }
+  }
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Fetch a single page by id or slug
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+{
+  page(
+    slug:"/services"
+    # or id: "xyz"
+  ) {
+    id
+    slug
+    content
+    contentRaw
+    children {
+      count
+      nodes {
+        id
+        slug
+        frontmatter {
+          title
+        }
+      }
+    }
+    parent {
+      id
+      slug
+      frontmatter {
+        title
+      }
+    }
+    path {
+      slug
+      frontmatter {
+        title
+      }
+    }
+  }
+}
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Types
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+Page {
+  id: ID!
+  slug: String!
+  content: String
+  rawContent: String
+  updated: String
+  created: String
+  frontmatter: Frontmatter
+    title: String
+    # And other remark-fields defined in your .md files
+  children: PageConnection
+    count: Int
+    nodes: [Page]
+  path: [Page]
+  parent: Page
+}
+```
