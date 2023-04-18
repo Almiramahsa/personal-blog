@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 const Author = ({ author }) => {
   return (
     <div className="text-center mt-10 mb-8 p-12 relative ">
@@ -38,8 +38,8 @@ const Author = ({ author }) => {
                 strokeWidth="2"
                 strokeLinecap="round"
               />
-              <circle cx="12" cy="12" r="4" stroke="#0ACF83" stroke-width="2" />
-              <path d="M16 9V13.5C16 14.8807 17.1193 16 18.5 16V16C19.8807 16 21 14.8807 21 13.5V12" stroke="#0ACF83" stroke-width="2" strokeLinecap="round" />
+              <circle cx="12" cy="12" r="4" stroke="#0ACF83" strokeWidth="2" />
+              <path d="M16 9V13.5C16 14.8807 17.1193 16 18.5 16V16C19.8807 16 21 14.8807 21 13.5V12" stroke="#0ACF83" strokeWidth="2" strokeLinecap="round" />
             </svg>
           </a>
         </li>
